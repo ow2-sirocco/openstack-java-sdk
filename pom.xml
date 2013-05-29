@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.openstack</groupId>
 	<artifactId>openstack-java-sdk</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>3.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>OpenStack Java SDK</name>
 	<description>OpenStack Java SDK</description>
@@ -21,10 +21,30 @@
 		<module>quantum-model</module>
 		<module>ceilometer-model</module>
 		<module>ceilometer-client</module>
-		<module>openstack-examples</module>
 		<module>openstack-client-connectors</module>
-		<module>openstack-console</module>
 	</modules>
+
+	<profiles>
+		<profile>
+			<id>console</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>openstack-console</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>examples</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>openstack-examples</module>
+			</modules>
+		</profile>
+	</profiles>
+
 	<licenses>
 		<license>
 			<name>Apache2</name>
@@ -72,7 +92,7 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.8</version>
+			<version>1.9.4</version>
 		</dependency>
 	</dependencies>
 	
