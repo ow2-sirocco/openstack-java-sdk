@@ -17,6 +17,11 @@ public class NovaListImages {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+        java.lang.System.out.println("connect: " + ExamplesConfiguration.KEYSTONE_USERNAME + ":" + ExamplesConfiguration.KEYSTONE_PASSWORD 
+        		+ " to tenant=" + "???" 
+        		+ ", novaEndPointName=" + ExamplesConfiguration.NOVA_ENDPOINT 
+        		+ ", KEYSTONE_AUTH_URL=" + ExamplesConfiguration.KEYSTONE_AUTH_URL);
+
 		
 		Keystone keystone = new Keystone(ExamplesConfiguration.KEYSTONE_AUTH_URL);
 		Access access = keystone.tokens().authenticate(new UsernamePassword(ExamplesConfiguration.KEYSTONE_USERNAME, ExamplesConfiguration.KEYSTONE_PASSWORD)).execute();
