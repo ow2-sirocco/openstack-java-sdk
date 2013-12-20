@@ -120,7 +120,7 @@ public class Network implements Serializable{
 		@JsonProperty("vpn_type")
 		private String vpnType;
 		@JsonProperty("default")
-		private boolean def;
+		private String def;
 		@JsonProperty("vpntenants")
 		private List<VpnTenant> vpnTenants;
 		private String id;
@@ -185,14 +185,14 @@ public class Network implements Serializable{
 		/**
 		 * @return the def
 		 */
-		public boolean isDef() {
+		public String isDef() {
 			return def;
 		}
 
 		/**
 		 * @param def the def to set
 		 */
-		public void setDef(boolean def) {
+		public void setDef(String def) {
 			this.def = def;
 		}
 
