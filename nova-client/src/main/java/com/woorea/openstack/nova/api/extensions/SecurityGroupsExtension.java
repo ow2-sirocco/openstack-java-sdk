@@ -37,6 +37,15 @@ public class SecurityGroupsExtension {
 
 	}
 
+	// XXX extension
+	public class ListByServer extends OpenStackRequest<SecurityGroups> {
+
+		public ListByServer(String serverId) {
+			super(CLIENT, HttpMethod.GET, new StringBuilder("/servers/").append(serverId).append("/os-security-groups").toString(), null, SecurityGroups.class);
+		}
+
+	}
+
 	public class Show extends OpenStackRequest<SecurityGroup> {
 
 		/**
@@ -105,6 +114,11 @@ public class SecurityGroupsExtension {
 
 	public Create createSecurityGroup(String name) {
 		return createSecurityGroup(name, null);
+	}
+	
+	// XXX extension
+	public ListByServer listByServer(String serverId) {
+		return new ListByServer(serverId);
 	}
 
 	public Show showSecurityGroup(Integer id) {
