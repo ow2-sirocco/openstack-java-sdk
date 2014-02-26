@@ -281,6 +281,50 @@ public interface ServerAction extends Serializable {
 		
 	}
 	
+	// XXX extension
+	@JsonRootName("addSecurityGroup")
+	public static final class AddSecurityGroup implements ServerAction {
+		
+		private String name;
+
+		/**
+		 * @return the name
+		 */
+		public String getName() {
+			return name;
+		}
+
+		/**
+		 * @param name the name to set
+		 */
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+	}
+	
+	// XXX extension
+	@JsonRootName("removeSecurityGroup")
+	public static final class RemoveSecurityGroup implements ServerAction {
+		
+		private String name;
+
+		/**
+		 * @return the name
+		 */
+		public String getName() {
+			return name;
+		}
+
+		/**
+		 * @param name the name to set
+		 */
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+	}
+	
 	@JsonRootName("rescue")
 	public static final class Rescue implements ServerAction {
 		

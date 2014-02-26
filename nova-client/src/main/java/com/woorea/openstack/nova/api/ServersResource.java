@@ -8,6 +8,7 @@ import com.woorea.openstack.base.client.OpenStackRequest;
 import com.woorea.openstack.nova.model.Metadata;
 import com.woorea.openstack.nova.model.Server;
 import com.woorea.openstack.nova.model.Server.Addresses;
+import com.woorea.openstack.nova.model.ServerAction.AddSecurityGroup;
 import com.woorea.openstack.nova.model.ServerAction.ChangePassword;
 import com.woorea.openstack.nova.model.ServerAction.ConfirmResize;
 import com.woorea.openstack.nova.model.ServerAction.ConsoleOutput;
@@ -19,6 +20,7 @@ import com.woorea.openstack.nova.model.ServerAction.Lock;
 import com.woorea.openstack.nova.model.ServerAction.Pause;
 import com.woorea.openstack.nova.model.ServerAction.Reboot;
 import com.woorea.openstack.nova.model.ServerAction.Rebuild;
+import com.woorea.openstack.nova.model.ServerAction.RemoveSecurityGroup;
 import com.woorea.openstack.nova.model.ServerAction.Rescue;
 import com.woorea.openstack.nova.model.ServerAction.Resize;
 import com.woorea.openstack.nova.model.ServerAction.Resume;
@@ -408,6 +410,42 @@ public class ServersResource {
 
 	public UnrescueServer unrescue(String serverId) {
 		return new UnrescueServer(serverId);
+	}
+	
+	// XXX extension : AddSecurityGroupAction
+	public class AddSecurityGroupAction extends Action<Void> {
+
+		//private AddSecurityGroup action;
+
+		public AddSecurityGroupAction(String serverId, AddSecurityGroup addSecurityGroup) {
+			super(serverId, Entity.json(addSecurityGroup), Void.class);
+		}
+
+	}
+	
+	// XXX extension : AddSecurityGroupAction
+	public AddSecurityGroupAction addSecurityGroupAction(String serverId, String securityGroupName) {
+		AddSecurityGroup addSecurityGroup = new AddSecurityGroup();
+		addSecurityGroup.setName(securityGroupName);
+		return new AddSecurityGroupAction(serverId, addSecurityGroup);
+	}
+	
+	// XXX extension : RemoveSecurityGroupAction
+	public class RemoveSecurityGroupAction extends Action<Void> {
+
+		//private RemoveSecurityGroup action;
+
+		public RemoveSecurityGroupAction(String serverId, RemoveSecurityGroup removeSecurityGroup) {
+			super(serverId, Entity.json(removeSecurityGroup), Void.class);
+		}
+
+	}
+	
+	// XXX extension : RemoveSecurityGroupAction
+	public RemoveSecurityGroupAction removeSecurityGroupAction(String serverId, String securityGroupName) {
+		RemoveSecurityGroup removeSecurityGroup = new RemoveSecurityGroup();
+		removeSecurityGroup.setName(securityGroupName);
+		return new RemoveSecurityGroupAction(serverId, removeSecurityGroup);
 	}
 
 	public class AssociateFloatingIp extends OpenStackRequest<Void> {
