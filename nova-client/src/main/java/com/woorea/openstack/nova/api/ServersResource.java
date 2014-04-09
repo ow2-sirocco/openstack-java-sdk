@@ -33,6 +33,7 @@ import com.woorea.openstack.nova.model.ServerAction.Unpause;
 import com.woorea.openstack.nova.model.ServerAction.Unrescue;
 import com.woorea.openstack.nova.model.ServerAction.VncConsole;
 import com.woorea.openstack.nova.model.ServerForCreate;
+import com.woorea.openstack.nova.model.ServerForCreateWithSchedulerHints;
 import com.woorea.openstack.nova.model.Servers;
 import com.woorea.openstack.nova.model.VolumeAttachment;
 import com.woorea.openstack.nova.model.VolumeAttachments;
@@ -50,6 +51,10 @@ public class ServersResource {
 	}
 
 	public Boot boot(ServerForCreate server) {
+		return new Boot(server);
+	}
+	
+	public Boot boot(ServerForCreateWithSchedulerHints server) {
 		return new Boot(server);
 	}
 
@@ -89,6 +94,10 @@ public class ServersResource {
 		public Boot(ServerForCreate server) {
 			super(CLIENT, HttpMethod.POST, "/servers", Entity.json(server), Server.class);
 			this.server = server;
+		}
+		
+		public Boot(ServerForCreateWithSchedulerHints server) {
+			super(CLIENT, HttpMethod.POST, "/servers", Entity.json(server), Server.class);
 		}
 
 	}
