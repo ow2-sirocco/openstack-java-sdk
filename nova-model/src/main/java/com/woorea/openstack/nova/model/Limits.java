@@ -157,6 +157,8 @@ public class Limits implements Serializable {
 		private Integer totalSecurityGroupsUsed;
 
 		private Integer maxTotalFloatingIps;
+		
+		private Integer totalFloatingIpsUsed;
 
 		private Integer totalKeyPairsUsed;
 
@@ -261,6 +263,10 @@ public class Limits implements Serializable {
 
 		public Integer getMaxTotalVolumeGigabytes() {
 			return maxTotalVolumeGigabytes;
+		}
+		
+		public Integer getTotalFloatingIpsUsed() {
+			return totalFloatingIpsUsed;
 		}
 
 		/* (non-Javadoc)
